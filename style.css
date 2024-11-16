@@ -16,7 +16,7 @@
 }
 
 #starting-text {
-    margin: auto;
+    text-align: center;
 }
 
 .wrapper {
@@ -159,4 +159,23 @@ input[type=number]::-webkit-outer-spin-button {
 
 #cars #container #price {
     font-weight: 600;
+}
+
+
+
+/* sizing for smaller screens */
+@media screen and (max-width: 1280px) {
+    .wrapper {
+        gap: 20px;
+    }
+
+    #cars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* two col */
+        gap: 20px;
+        align-items: start;
+        padding: 20px 0;
+        min-height: 200px;
+    }
+
 }
