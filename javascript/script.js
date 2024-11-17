@@ -24,9 +24,7 @@ function addCarCards() {
 function createCard(car) {
     const element = `
         <div id="container">
-            <img src="/assets/${car.make}-${car.model}.jpg" alt="Broken Image1">
-            <img src="./assets/${car.make}-${car.model}.jpg" alt="Broken Image2">
-            <img src=".../assets/${car.make}-${car.model}.jpg" alt="Broken Image3"> 
+            <img src="./assets/${car.make}-${car.model}.jpg" alt="Broken Image">
             <h1>${car.year} ${car.make} ${car.model}</h1>
             <hr>
             <div id="wrapper">
