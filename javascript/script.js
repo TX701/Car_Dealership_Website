@@ -24,9 +24,9 @@ function addCarCards() {
 function createCard(car) {
     const element = `
         <div id="container">
-            <img src="../../assets/${car.make}-${car.model}.jpg" alt="Broken Image1">
-            <img src="./../assets/${car.make}-${car.model}.jpg" alt="Broken Image2">
-            <img src=".././assets/${car.make}-${car.model}.jpg" alt="Broken Image3">
+            <img src="/assets/${car.make}-${car.model}.jpg" alt="Broken Image1">
+            <img src="./assets/${car.make}-${car.model}.jpg" alt="Broken Image2">
+            <img src=".../assets/${car.make}-${car.model}.jpg" alt="Broken Image3"> 
             <h1>${car.year} ${car.make} ${car.model}</h1>
             <hr>
             <div id="wrapper">
@@ -53,8 +53,7 @@ function addToFilter() {
         }
     }
 
-    // sort by alphabet
-    colorArr.sort();
+    colorArr.sort(); // sort by alphabet
     makeArr.sort();
 
     colorArr.forEach((color) => addCheckBoxes(filterColorParent, color, "color"));
