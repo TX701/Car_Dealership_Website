@@ -110,15 +110,6 @@ export const usedCars = [
     gasMileage: "19 mpg city, 27 mpg highway",
   },
   {
-    year: 2016,
-    make: "BMW",
-    model: "5 Series",
-    mileage: 32000,
-    price: 27000,
-    color: "Black",
-    gasMileage: "23 mpg city, 34 mpg highway",
-  },
-  {
     year: 2020,
     make: "Porsche",
     model: "Cayenne",
