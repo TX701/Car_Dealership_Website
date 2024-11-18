@@ -11,39 +11,45 @@
     <script type="module" src="./javascript/usedCars.js" defer></script>
 </head>
 <body>
-    <div id="left">
-        <form id="filter">
-            <div id="year">
-                <h1>Year</h1>
-                <input type="number" placeholder="Min Year" name="min-year" id="min-year">
-                <input type="number" placeholder="Max Year" name="max-year" id="max-year">
-            </div>
-
-            <div id="makes">
-                <h1>Make</h1>
-            </div>
-            
-            <div id="mileage">
-                <h1>Maximum Mileage</h1>
-                <input type="number" placeholder="Max Mileage" name="mileage" id="mileage">
-            </div>
-            
-            <div id="price">
-                <h1>Price</h1>
-                <input type="number" placeholder="Min Price" name="min-price" id="min-price">
-                <input type="number" placeholder="Max Price" name="max-price" id="max-price">
-            </div>
-
-            <div id="colors">
-                <h1>Color</h1>
-            </div>
-            
-            <button type="submit" id="search"><p>Search</p></button>
-        </form>
-    </div>
-    <div class="right">
-        <h1>Our Current Catalog of Cars</h1>
-        <div id="cars"></div>
+    <h1 id="starting-text">Our Current Catalog of Cars:</h1>
+    <div class="wrapper">
+        <div id="left">
+            <form id="filter">
+                <div id="year">
+                    <h1>Year</h1>
+                    <input type="number" placeholder="Min Year" name="min-year" id="min-year">
+                    <input type="number" placeholder="Max Year" name="max-year" id="max-year">
+                </div>
+    
+                <div id="makes">
+                    <h1>Make</h1>
+                </div>
+                
+                <div id="mileage">
+                    <h1>Mileage</h1>
+                    <input type="number" placeholder="Min Mileage" name="min-mileage" id="min-mileage">
+                    <input type="number" placeholder="Max Mileage" name="max-mileage" id="max-mileage">
+                </div>
+                
+                <div id="price">
+                    <h1>Price</h1>
+                    <input type="number" placeholder="Min Price" name="min-price" id="min-price">
+                    <input type="number" placeholder="Max Price" name="max-price" id="max-price">
+                </div>
+    
+                <div id="colors">
+                    <h1>Color</h1>
+                </div>
+                
+                <button type="submit" id="search">Search</button>
+            </form>
+        </div>
+        <div id="nothing" >
+            No cars match your criteria.
+        </div>
+        <div class="right">
+            <div id="cars"></div>
+        </div>
     </div>
 </body>
 </html>

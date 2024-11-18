@@ -51,7 +51,7 @@ export const usedCars = [
     model: "Passat",
     mileage: 40000,
     price: 15000,
-    color: "Gray",
+    color: "Silver",
     gasMileage: "29 mpg city, 40 mpg highway",
   },
   {
@@ -137,14 +137,4 @@ export const usedCars = [
     color: "Black",
     gasMileage: "21 mpg city, 30 mpg highway",
   },
-  /*
-   {
-     year: 2016,
-     make: "BMW",
-     model: "5Series",
-     mileage: 32000,
-     price: 27000,
-     color: "Black",
-     gasMileage: "23 mpg city, 34 mpg highway",
-   }, */
 ];

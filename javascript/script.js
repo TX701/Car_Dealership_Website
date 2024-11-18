@@ -4,7 +4,7 @@ import { usedCars } from "./usedCars.js"; // import usedCars array from another 
 const cardParent = document.querySelector("#cars");
 const filterColorParent = document.querySelector("#colors");
 const filterMakeParent = document.querySelector("#makes");
-const total = document.querySelector("#results");
+const nothing = document.querySelector("#nothing");
 
 init();
 
@@ -24,7 +24,7 @@ function addCarCards() {
 function createCard(car) {
     const element = `
         <div id="container">
-            <img src="./assets/${car.make}-${car.model}.jpg" alt="Broken Image">
+            <img src="./assets/${car.make}${car.model}.jpg" alt="Broken Image">
             <h1>${car.year} ${car.make} ${car.model}</h1>
             <hr>
             <div id="wrapper">
@@ -60,22 +60,30 @@ function addToFilter() {
 
 // creates checkboxes based off of what cars are in the database
 function addCheckBoxes(parent, id, name) {
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = id;
-    checkbox.id = id;
-    checkbox.name = name;
+    let element; // Declare `element` outside the condition
 
-    const label = document.createElement("label");
-    label.htmlFor = id;
-    label.textContent = id;
+    // different if color as we need to add little circles representing the colors (stylized in block due to dynamic nature)
+    if (name === "color") {
+        element = `
+            <div class="checkbox-wrapper" style="display: flex; align-items: center;">
+                <input type="checkbox" id="${id}" value="${id}" name="${name}">
+                <div class="color-shape" style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: ${id}; margin: 0 10px; border: 2px solid black;"></div>
+                <label for="${id}">${id}</label>
+            </div>`;
+    } else {
+        element = `
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="${id}" value="${id}" name="${name}">
+                <label for="${id}">${id}</label>
+            </div>`;
+    }
 
-    parent.appendChild(checkbox);
-    parent.appendChild(label);
+    parent.innerHTML += element;
 }
 
-// action to do on button submit
 document.getElementById("filter").addEventListener("submit", function (event) {
+    window.location.href = "#starting-text";
+
     event.preventDefault(); // prevent empty form submission
     const formData = new FormData(this);
 
@@ -98,15 +106,16 @@ document.getElementById("filter").addEventListener("submit", function (event) {
     // parse and convert form data to numbers where necessary
     const minYear = parseInt(formData.get("min-year")) || null;
     const maxYear = parseInt(formData.get("max-year")) || null;
-    const mileage = parseInt(formData.get("mileage")) || null;
+    const minMileage = parseInt(formData.get("min-mileage")) || null;
+    const maxMileage = parseInt(formData.get("max-mileage")) || null;
     const minPrice = parseFloat(formData.get("min-price")) || null;
     const maxPrice = parseFloat(formData.get("max-price")) || null;
 
-    getCars(minYear, maxYear, selectedMakes, mileage, minPrice, maxPrice, selectedColor); // get cars that match the filter
+    getCars(minYear, maxYear, selectedMakes, minMileage, maxMileage, minPrice, maxPrice, selectedColor); // get cars that match the filter
 });
 
 // gets the cars that match the users requests
-function getCars(yearMin, yearMax, makeArr, maxMile, minPrice, maxPrice, colorArr) {
+function getCars(yearMin, yearMax, makeArr, minMile, maxMile, minPrice, maxPrice, colorArr) {
     let filterArr = [];
     const makesSet = new Set(makeArr);
     const colorsSet = new Set(colorArr);
@@ -118,7 +127,9 @@ function getCars(yearMin, yearMax, makeArr, maxMile, minPrice, maxPrice, colorAr
         const yearMatch =
         (yearMin === null || car.year >= yearMin) &&
         (yearMax === null || car.year <= yearMax);
-        const mileageMatch = maxMile === null || car.mileage <= maxMile;
+        const mileageMatch = 
+        (minMile === null || car.mileage >= minMile) &&
+        (maxMile === null || car.mileage <= maxMile);
         const priceMatch =
         (minPrice === null || car.price >= minPrice) &&
         (maxPrice === null || car.price <= maxPrice);
@@ -131,11 +142,11 @@ function getCars(yearMin, yearMax, makeArr, maxMile, minPrice, maxPrice, colorAr
         }
     }
 
-    if (filterArr.length == 0) {
-        const element = `
-        <h1>There are no cars that match those filter options, sorry.</h1>`; // for if the filter returns nothing
-        cardParent.innerHTML += element;
+    if (filterArr.length === 0) {
+        nothing.style.display = "block"; // display message saying search returned nothing
+        cardParent.innerHTML = ""; // clear car cards
     } else {
-        filterArr.forEach((car) => createCard(car)); // display the filtered cards
+        nothing.style.display = "none"; // hide message saying search returned nothing
+        filterArr.forEach((car) => createCard(car)); // display filtered cars
     }
 }
