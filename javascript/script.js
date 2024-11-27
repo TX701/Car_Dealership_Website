@@ -104,12 +104,12 @@ document.getElementById("filter").addEventListener("submit", function (event) {
     let filterArr = [];
 
     // parse and convert form data to numbers where necessary
-    const minYear = parseInt(formData.get("min-year")) || null;
-    const maxYear = parseInt(formData.get("max-year")) || null;
-    const minMileage = parseInt(formData.get("min-mileage")) || null;
-    const maxMileage = parseInt(formData.get("max-mileage")) || null;
-    const minPrice = parseFloat(formData.get("min-price")) || null;
-    const maxPrice = parseFloat(formData.get("max-price")) || null;
+    const minYear = parseInt(Number(formData.get("min-year"))) || null;
+    const maxYear = parseInt(Number(formData.get("max-year"))) || null;
+    const minMileage = parseInt(Number(formData.get("min-mileage"))) || null;
+    const maxMileage = parseInt(Number(formData.get("max-mileage"))) || null;
+    const minPrice = parseFloat(Number(formData.get("min-price"))) || null;
+    const maxPrice = parseFloat(Number(formData.get("max-price"))) || null;
 
     getCars(minYear, maxYear, selectedMakes, minMileage, maxMileage, minPrice, maxPrice, selectedColor); // get cars that match the filter
 });
