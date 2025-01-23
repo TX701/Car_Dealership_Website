@@ -9,11 +9,12 @@
 
     <script type="module" src="./javascript/script.js" defer></script>
     <script type="module" src="./javascript/usedCars.js" defer></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
-    <h1 id="starting-text">Our Current Catalog of Cars:</h1>
     <div class="wrapper">
         <div id="left">
+            <box-icon id="menu" name="menu"></box-icon>
             <form id="filter">
                 <div id="year">
                     <!-- input types changed to text to avoid chrome errors -->
@@ -45,10 +46,9 @@
                 <button type="submit" id="search">Search</button>
             </form>
         </div>
-        <div id="nothing" >
-            No cars match your criteria.
-        </div>
         <div class="right">
+            <div id="nothing">No cars match your criteria.</div>
+            <h1>Current Catalog: </h1>
             <div id="cars"></div>
         </div>
     </div>
