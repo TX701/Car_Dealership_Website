@@ -52,7 +52,7 @@ const getCars = (yearMin, yearMax, makeArr, minMile, maxMile, minPrice, maxPrice
 }
 
 document.getElementById("filter").addEventListener("submit", (event) => {
-    window.scrollTo(0, 0);
+    window.location.href = "#starting-text";
 
     event.preventDefault(); // prevent empty form submission
     const formData = new FormData(this);
